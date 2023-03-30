@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
+import HttpService from "../services/HttpService";
 
 export default function LoginPage() {
+
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLoginPressed = () => {
+    HttpService.login(userId, password)
+    .then((response) => {
+      console.dir(response);
+    })
+  }
 
     return(
     <div>
@@ -20,13 +31,15 @@ export default function LoginPage() {
         <TextField
           required
           label="Username"
+          onChange={(event) => {setUserId(event.target.value)}}
         />
         <TextField
           required
           label="Password"
+          onChange={(event) => {setPassword(event.target.value)}}
         />
     </Box>
-    <Button variant="contained">Login</Button>
+    <Button variant="contained" onClick={handleLoginPressed}>Login</Button>
     <p>Don't have an account? 
       <Link to="/register">
         <Button variant="text">Sign Up</Button>
