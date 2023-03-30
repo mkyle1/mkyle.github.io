@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.message {
+  width: 90%;
+  padding: 5px;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.message-input {
+  width: 60%;
+  height: 5vh;
+}
+
+.button {
+  margin-top: 5px;
+}
+
+.input-and-send {
+  
+}
