@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import { Button, TextField, IconButton } from "@mui/material";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import HttpService from "../services/HttpService";
 
 function GroupChat() {
+  useEffect(() => {
+    HttpService.getMessages().then((response) => {
+      setMessages(response.data.messages);
+      console.dir(response);
+    })
+  }, []);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
     "Hi everyone, welcome to the group chat!",
@@ -21,25 +28,27 @@ function GroupChat() {
 
   const handleSendMessage = () => {
     if (message.trim() !== "") {
-      setMessages([...messages, message]);
-      setMessage("");
+      HttpService.sendMessage(message)
+        .then(() => {
+          setMessages([...messages, message]);
+          setMessage("");
+        });
+      
     }
   };
 
   return (
     <div style={{height: '90vh'}}>
-      <Box
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
-          marginTop: "10vh",
-          maxHeight: "90%",
-          minHeight: "90%",
-        }}
-      >
+      <div className="messages-container">
         {messages.map((message, index) => (
-          <div key={index} className="message">{message}</div>
+          <div key={index} className="message">
+            {message.text}
+            <div className="nickname">
+              {message.usernickname}
+            </div>
+          </div>
         ))}
-      </Box>
+      </div>
       
       <div className="input-and-send" style={{display: 'flex', alignItems: 'center', marginTop: '10px'}}>
         <IconButton color="primary" aria-label="upload picture" component="label">

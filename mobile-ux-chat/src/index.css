@@ -35,3 +35,13 @@ code {
 .input-and-send {
   
 }
+
+.nickname {
+  color: grey;
+  font-size: 8px;
+}
+
+.messages-container {
+  height: 90vh;
+  overflow-y: scroll;
+}
