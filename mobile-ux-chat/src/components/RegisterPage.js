@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HttpService from "../services/HttpService";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function RegisterPage() {
+const RegisterPage = (props) => {
 
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
@@ -23,13 +23,23 @@ export default function RegisterPage() {
     
   }
 
+  const location = useLocation();
+
+  useEffect(() => {
+    props.path(location.pathname);
+  }, [location]);
+
     return(
       <div>
       <Box
         component="form"
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
-          marginTop: "30vh",
+          marginTop: "15vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column"
         }}
         noValidate
         autoComplete="off"
@@ -65,3 +75,5 @@ export default function RegisterPage() {
       </div>
     );
 }
+
+export default RegisterPage;

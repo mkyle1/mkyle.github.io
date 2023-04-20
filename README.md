@@ -1,9 +1,9 @@
 # MobUX-Chat
 First Start:
 
-npm i
-
 cd ./mobile-ux-chat
+
+npm i
 
 npm start
 

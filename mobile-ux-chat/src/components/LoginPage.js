@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import { Link } from "react-router-dom";
 import HttpService from "../services/HttpService";
 
@@ -24,6 +26,10 @@ export default function LoginPage() {
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
         marginTop: "30vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column"
       }}
       noValidate
       autoComplete="off"
@@ -37,6 +43,11 @@ export default function LoginPage() {
           required
           label="Password"
           onChange={(event) => {setPassword(event.target.value)}}
+        />
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Remember Login"
+          labelPlacement="start"
         />
     </Box>
     <Button variant="contained" onClick={handleLoginPressed}>Login</Button>
