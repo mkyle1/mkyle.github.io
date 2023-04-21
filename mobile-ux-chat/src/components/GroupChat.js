@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Box from '@mui/material/Box';
 import { Button, TextField, IconButton } from "@mui/material";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import HttpService from "../services/HttpService";
@@ -33,7 +32,6 @@ function GroupChat() {
           setMessages([...messages, message]);
           setMessage("");
         });
-      
     }
   };
 
