@@ -59,7 +59,6 @@ export default function LoginPage() {
         <Button variant="text">Sign Up</Button>
       </Link> 
     </p>
-    <Link to="/chat">Chat</Link>
     </div>
     );
 }
