@@ -63,11 +63,13 @@ const RegisterPage = (props) => {
           <TextField
             required
             label="Password"
+            type="password"
             onChange={(event) => {setPassword(event.target.value)}}
           />
           <TextField
             required
             label="Password Confirm"
+            type="password"
             onChange={(event) => {setPasswordConfirm(event.target.value)}}
           />
       </Box>

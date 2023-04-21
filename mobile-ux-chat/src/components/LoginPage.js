@@ -44,6 +44,7 @@ export default function LoginPage() {
         <TextField
           required
           label="Password"
+          type="password"
           onChange={(event) => {setPassword(event.target.value)}}
         />
         <FormControlLabel
