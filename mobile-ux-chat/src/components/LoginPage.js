@@ -4,18 +4,20 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HttpService from "../services/HttpService";
 
 export default function LoginPage() {
 
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLoginPressed = () => {
     HttpService.login(userId, password)
     .then((response) => {
       console.dir(response);
+      navigate('/chat');
     })
   }
 
@@ -50,9 +52,7 @@ export default function LoginPage() {
           labelPlacement="start"
         />
     </Box>
-    <Link to="/chat">
       <Button variant="contained" onClick={handleLoginPressed}>Login</Button>
-    </Link>
     <p>Don't have an account? 
       <Link to="/register">
         <Button variant="text">Sign Up</Button>
