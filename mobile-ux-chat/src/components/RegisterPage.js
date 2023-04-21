@@ -26,7 +26,7 @@ const RegisterPage = (props) => {
   const location = useLocation();
 
   useEffect(() => {
-    props.path(location.pathname);
+    props.setPath(location.pathname);
   }, [location]);
 
     return(
