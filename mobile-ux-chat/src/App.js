@@ -11,15 +11,14 @@ export default function App() {
 
   return (
     <div className="App">
-    <BrowserRouter>
-    <TopAppBar path={window.location.pathname}/>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage setPath={setPath}/>} />
-        <Route path="/chat" element={<GroupChat />} />
-      </Routes>
-    </BrowserRouter>
-    
+      <BrowserRouter>
+        <TopAppBar path={window.location.pathname}/>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage setPath={setPath}/>} />
+          <Route path="/chat" element={<GroupChat />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
