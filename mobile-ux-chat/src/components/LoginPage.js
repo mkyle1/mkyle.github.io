@@ -50,7 +50,9 @@ export default function LoginPage() {
           labelPlacement="start"
         />
     </Box>
-    <Button variant="contained" onClick={handleLoginPressed}>Login</Button>
+    <Link to="/chat">
+      <Button variant="contained" onClick={handleLoginPressed}>Login</Button>
+    </Link>
     <p>Don't have an account? 
       <Link to="/register">
         <Button variant="text">Sign Up</Button>
