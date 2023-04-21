@@ -36,6 +36,7 @@ const RegisterPage = (props) => {
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
           marginTop: "15vh",
+          marginBottom: "2vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -70,8 +71,10 @@ const RegisterPage = (props) => {
             onChange={(event) => {setPasswordConfirm(event.target.value)}}
           />
       </Box>
-      <Button variant="contained" onClick={handleRegister}>Register</Button>
-      <Link to="/chat">Chat</Link>
+      <Button variant="contained" onClick={handleRegister} sx={{marginBottom: "2vh"}}>Register</Button>
+        <div>
+          <Link to="/chat">Chat</Link>
+        </div>
       </div>
     );
 }

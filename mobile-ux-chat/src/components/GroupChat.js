@@ -67,6 +67,7 @@ function GroupChat() {
           onClick={handleSendMessage}
           color="primary"
           className="button"
+          sx={{marginLeft: '10px'}}
         >
             Send
         </Button>

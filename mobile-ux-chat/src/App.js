@@ -15,8 +15,8 @@ export default function App() {
 
   return (
     <div className="App">
-    <TopAppBar path={changedPath}/>
     <BrowserRouter>
+    <TopAppBar path={window.location.pathname}/>
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage path={pull_path}/>} />
