@@ -3,7 +3,7 @@ import HttpService from "../services/HttpService";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const RegisterPage = (props) => {
 
@@ -12,12 +12,14 @@ const RegisterPage = (props) => {
   const [passwordConfirm, setPasswordConfirm] = useState(".");
   const [nickname, setNickname] = useState(".");
   const [realname, setRealname] = useState(".");
+  const navigate = useNavigate();
 
   const handleRegister = () => {
     if (password === passwordConfirm) {
       HttpService.register(userId, password, nickname, realname)
         .then((response) => {
           console.dir(response);
+          navigate('/chat');
         })
     }
     
@@ -27,7 +29,7 @@ const RegisterPage = (props) => {
 
   useEffect(() => {
     props.setPath(location.pathname);
-  }, [location]);
+  });
 
     return(
       <div>
@@ -73,7 +75,7 @@ const RegisterPage = (props) => {
             onChange={(event) => {setPassword(event.target.value)}}
             color={password.length < 8 ? "warning" : "success"}
             error={password === ""}
-            helperText={password === "" && 'Password required' || password.length < 8 && 'Password must be at least 8 characters' }
+            helperText={(password === "" && 'Password required') || (password.length < 8 && 'Password must be at least 8 characters') }
           />
           <TextField
             required
@@ -81,13 +83,10 @@ const RegisterPage = (props) => {
             type="password"
             onChange={(event) => {setPasswordConfirm(event.target.value)}}
             error={passwordConfirm === ""}
-            helperText={passwordConfirm === "" && 'Confirmation of password required' || password !== passwordConfirm && 'Passwords must match'}
+            helperText={(passwordConfirm === "" && 'Confirmation of password required') || (password !== passwordConfirm && 'Passwords must match')}
           />
       </Box>
       <Button variant="contained" onClick={handleRegister} sx={{marginBottom: "2vh"}}>Register</Button>
-        <div>
-          <Link to="/chat">Chat</Link>
-        </div>
       </div>
     );
 }
