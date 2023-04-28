@@ -9,8 +9,9 @@ import HttpService from "../services/HttpService";
 
 export default function LoginPage() {
 
-  const [userId, setUserId] = useState("");
-  const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState(".");
+  const [password, setPassword] = useState(".");
+  const [loginFail, setLoginFail] = useState(false);
   const navigate = useNavigate();
 
   const handleLoginPressed = () => {
@@ -18,6 +19,10 @@ export default function LoginPage() {
     .then((response) => {
       console.dir(response);
       navigate('/chat');
+    })
+    .catch((error) => {
+      console.dir(error);
+      setLoginFail(true);
     })
   }
 
@@ -40,12 +45,16 @@ export default function LoginPage() {
           required
           label="Username"
           onChange={(event) => {setUserId(event.target.value)}}
+          error={userId === ""}
+          helperText={userId === "" ? 'Username required' : ' '}
         />
         <TextField
           required
           label="Password"
           type="password"
           onChange={(event) => {setPassword(event.target.value)}}
+          error={password === ""}
+          helperText={password === "" ? 'Password required' : ' '}
         />
         <FormControlLabel
           control={<Checkbox />}
@@ -53,6 +62,7 @@ export default function LoginPage() {
           labelPlacement="start"
         />
     </Box>
+    {loginFail === true ? <p style = {{color: "red"}}>Invalid username or password</p> : null}
       <Button variant="contained" onClick={handleLoginPressed}>Login</Button>
     <p>Don't have an account? 
       <Link to="/register">
