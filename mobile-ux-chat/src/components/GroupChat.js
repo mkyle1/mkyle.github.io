@@ -35,15 +35,24 @@ function GroupChat() {
     }
   };
 
+  function timeSort(time){
+    const timeArray = time.split(/-|_/);
+    let timeString = timeArray[2] + "." + timeArray[1] + "." + timeArray[0] + " " + timeArray[3] + ":" + timeArray[4];
+    return timeString;
+  }
+
   return (
     <div style={{height: '90vh'}}>
       <div className="messages-container">
         {messages.map((message, index) => (
           <div key={index} className="message">
-            {message.text}
             <div className="nickname">
               {message.usernickname}
             </div>
+            <div className="time">
+              {message.time ? timeSort(message.time) : ""}
+            </div>
+            {message.text}
           </div>
         ))}
       </div>

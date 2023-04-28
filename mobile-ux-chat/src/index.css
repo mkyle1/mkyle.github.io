@@ -37,8 +37,13 @@ code {
 }
 
 .nickname {
+  color: black;
+  font-weight: bold;
+  font-size: 10px;
+}
+.time {
   color: grey;
-  font-size: 8px;
+  font-size: 10px;
 }
 
 .messages-container {
