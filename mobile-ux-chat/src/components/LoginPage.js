@@ -20,7 +20,7 @@ export default function LoginPage() {
         if (token !== null) {
           navigate('/chat');
         }
-    }, []);
+    });
 
   const handleLoginPressed = () => {
     HttpService.login(userId, password, remember)
