@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, TextField, IconButton } from "@mui/material";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import HttpService from "../services/HttpService";
+import MessageCard from './MessageCard.tsx';
 
 function GroupChat() {
   useEffect(() => {
@@ -11,15 +12,7 @@ function GroupChat() {
     })
   }, []);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([
-    "Hi everyone, welcome to the group chat!",
-    "Hey, how's it going?",
-    "I'm doing well, thanks for asking!",
-    "What's everyone up to today?",
-    "Just working on some React projects",
-    "I'm taking a break from work and catching up on some reading",
-    "Sounds like a great way to spend the day!",
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -43,20 +36,16 @@ function GroupChat() {
 
   return (
     <div style={{height: '90vh'}}>
-      <div className="messages-container">
-        {messages.map((message, index) => (
-          <div key={index} className="message">
-            <div className="nickname">
-              {message.usernickname}
-            </div>
-            <div className="time">
-              {message.time ? timeSort(message.time) : ""}
-            </div>
-            {message.text}
-          </div>
-        ))}
-      </div>
-      
+      {messages.map((message, index) =>
+        <div key={index}>
+        <MessageCard
+          usernickname={message.usernickname}
+          time={message.time ? timeSort(message.time) : ""}
+          text={message.text}
+        >
+        </MessageCard>
+        </div>
+      )}
       <div className="input-and-send" style={{display: 'flex', alignItems: 'center', marginTop: '10px'}}>
         <IconButton color="primary" aria-label="upload picture" component="label">
           <input hidden accept="image/*" type="file" />
