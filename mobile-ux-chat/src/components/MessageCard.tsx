@@ -27,10 +27,10 @@ function MessageCard({ usernickname, text, time, isOwnMessage }: PropsWithChildr
   const boxMargin = isOwnMessage ? '0 10px 0 auto': '10px';
 
   return (
-    <Box sx={{ display: 'inline-block', margin: boxMargin, textAlign: rightLeft }}>
+    <Box sx={{ display: 'inline-block', margin: boxMargin, textAlign: 'left' }}>
       <StyledBox sx={{ textAlign: rightLeft, padding: '0px 5px 0px 5px', fontSize: '20px', fontWeight: 'bold', borderRadius: '10px 10px 0px 0px' }}>{usernickname}</StyledBox>
       <MessageBox sx={{ fontSize: '20px', wordBreak: 'break-word' }}>{limitedText}</MessageBox>
-      <StyledBox sx={{ textAlign: rightLeft, padding: '0px 5px 0px 5px', backgroundColor: 'lightgray', borderRadius: '0px 0px 10px 10px' }}> {time} </StyledBox>
+      <StyledBox sx={{ textAlign: 'right', padding: '0px 5px 0px 5px', backgroundColor: 'lightgray', borderRadius: '0px 0px 10px 10px' }}> {time} </StyledBox>
     </Box>
   );
 }

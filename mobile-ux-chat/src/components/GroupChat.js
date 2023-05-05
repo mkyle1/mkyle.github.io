@@ -13,7 +13,7 @@ function GroupChat() {
   }, []);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const currentUser = "dapait03";
+  const currentUser = "Dario";
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
