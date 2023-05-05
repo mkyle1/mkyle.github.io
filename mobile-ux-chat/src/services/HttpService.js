@@ -6,7 +6,7 @@ try {
     token = JSON.parse(localStorage.getItem("loginToken"));
 } catch (error) {console.log("No Logintoken yet")}
 
-//const _axios = axios.create();
+const _axios = axios.create();
 
 let axiosConfig = {
     headers: {
@@ -16,7 +16,7 @@ let axiosConfig = {
 
 const baseUrl = "https://www2.hs-esslingen.de/~melcher/map/chat/api/"
 
-//const getAxiosClient = () => _axios;
+const getAxiosClient = () => _axios;
 
 if (window.caches) {
     caches.open("profile-cache");
