@@ -13,6 +13,7 @@ function GroupChat() {
   }, []);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const currentUser = "dapait03";
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -42,6 +43,7 @@ function GroupChat() {
           usernickname={message.usernickname}
           time={message.time ? timeSort(message.time) : ""}
           text={message.text}
+          isOwnMessage={message.usernickname === currentUser}
         >
         </MessageCard>
         </div>
