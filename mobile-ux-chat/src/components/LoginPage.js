@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -12,12 +12,20 @@ export default function LoginPage() {
   const [userId, setUserId] = useState(".");
   const [password, setPassword] = useState(".");
   const [loginFail, setLoginFail] = useState(false);
+  const [remember, setRemember] = useState("off");
   const navigate = useNavigate();
 
+    useEffect(() => {
+        const token = JSON.parse(localStorage.getItem("loginToken"));
+        if (token !== null) {
+          navigate('/chat');
+        }
+    }, []);
+
   const handleLoginPressed = () => {
-    HttpService.login(userId, password)
+    HttpService.login(userId, password, remember)
     .then((response) => {
-      console.dir(response);
+      console.log(response);
       navigate('/chat');
     })
     .catch((error) => {
@@ -59,6 +67,7 @@ export default function LoginPage() {
         <FormControlLabel
           control={<Checkbox />}
           label="Remember Login"
+          onChange={(event) => {setRemember(event.target.value)}}
           labelPlacement="start"
         />
     </Box>

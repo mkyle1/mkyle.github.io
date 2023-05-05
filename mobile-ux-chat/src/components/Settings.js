@@ -11,6 +11,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Link } from "react-router-dom";
+import HttpService from '../services/HttpService';
 
 const Settings = (props) => {
   const {open, onClose} = props;  
@@ -49,7 +50,7 @@ const Settings = (props) => {
         </RadioGroup>
         </FormControl>
         
-        <Button component={Link} to="/" onClick={onClose} variant="outlined" sx={{marginBottom: "10px", marginTop: "20px"}}>Log Out</Button>
+        <Button component={Link} to="/" onClick={() => {onClose(); localStorage.removeItem("loginToken"); HttpService.logout()}} variant="outlined" sx={{marginBottom: "10px", marginTop: "20px"}}>Log Out</Button>
         <Button component={Link} to="/" onClick={onClose} variant="outlined" color="warning" sx={{marginBottom: "10px"}}>Delete Account</Button>
         </DialogContent>
         <DialogActions>

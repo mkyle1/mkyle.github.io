@@ -2,6 +2,9 @@ import axios from "axios";
 
 
 let token = null;
+try {
+    token = JSON.parse(localStorage.getItem("loginToken"));
+} catch (error) {console.log("No Logintoken yet")}
 
 const _axios = axios.create();
 
@@ -31,7 +34,7 @@ async function register(userid, password, nickname, fullname) {
     return response;
 }
 
-async function login(userid, password) {
+async function login(userid, password, remember) {
     //const response = await _axios.get(baseUrl + "login&userid=" + userid + "&password=" + password);
     const response = await axios.post(baseUrl, {
         request: "login",
@@ -39,11 +42,13 @@ async function login(userid, password) {
         password: password
     }, axiosConfig).then((response) => {
         token = response.data.token;
+        console.log(remember);
+        if(remember === "on"){localStorage.setItem("loginToken", JSON.stringify(token));}
     });
     return response;
 }
 
-async function logout(userid, sessionToken) {
+async function logout() {
     //const response = await _axios.get(baseUrl + "logout&userid=" + userid + "&sessionToken=" + sessionToken);
     const response = await axios.post(baseUrl, {
         request: "logout",
