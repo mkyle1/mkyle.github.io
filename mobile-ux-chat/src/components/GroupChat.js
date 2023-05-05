@@ -35,9 +35,9 @@ function GroupChat() {
   }
 
   return (
-    <div style={{height: '90vh'}}>
+    <div style={{height: '90vh', paddingBottom: '100px'}}>
       {messages.map((message, index) =>
-        <div key={index}>
+        <div key={index} sx={{ marginBottom: '30px'}}>
         <MessageCard
           usernickname={message.usernickname}
           time={message.time ? timeSort(message.time) : ""}
@@ -46,7 +46,7 @@ function GroupChat() {
         </MessageCard>
         </div>
       )}
-      <div className="input-and-send" style={{display: 'flex', alignItems: 'center', marginTop: '10px'}}>
+      <div className="input-and-send" style={{display: 'flex', position: 'fixed', bottom: '0', alignItems: 'center', marginBottom: '30px'}}>
         <IconButton color="primary" aria-label="upload picture" component="label">
           <input hidden accept="image/*" type="file" />
           <PhotoCamera />
@@ -57,6 +57,7 @@ function GroupChat() {
           value={message}
           onChange={handleMessageChange}
           placeholder="Type your message here..."
+          sx={{width: 'auto'}}
         />
         <Button 
           variant="contained"

@@ -33,7 +33,7 @@ const TopAppBar = (props) => {
   };
 
   return (
-    <Paper sx={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: "20" }} elevation={1}>
+    <Paper sx={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: "20", marginBottom: "20" }} elevation={1}>
       <AppBar position="static" sx={{ fontSize: 72, backgroundColor: "#007ACC" }}>
         <Toolbar>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1}}>
