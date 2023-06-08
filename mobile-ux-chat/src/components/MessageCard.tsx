@@ -40,28 +40,27 @@ function MessageCard({ usernickname, text, photoid, time, isOwnMessage }: PropsW
   }
 
   return (
-    <Box className="frosted-glass-panel" sx={{ display: 'inline-block',
+    <Box className="frosted-glass-panel-messages" sx={{ display: 'inline-block',
                margin: boxMargin,
                padding: '0',
                textAlign: 'left',
                float: rightLeft ,
                maxWidth: '80%'}}>
         <div className='username' style={{fontWeight: 'bold',
-                                          borderBottom: '1px solid grey',
-                                          padding: '0 0.4em 0.1em 0.4em'}}>
+                                          borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+                                          padding: '0 0.4em 0.2em 0.4em'}}>
           {usernickname}
         </div>
         <div className='message-text' style={{fontWeight: 'normal',
-                                              paddingBottom: '0.2em',
                                               wordBreak: 'break-word',
-                                              padding: '0 0.4em 0 0.4em'}}>
+                                              padding: '0.2em 0.4em 0.2em 0.4em'}}>
           {limitedText}
         </div>
         <div className='message-image'>
           {image}
         </div>
         <div className='message-date' style={{fontWeight: 'lighter',
-                                              borderTop: '1px solid grey',
+                                              borderTop: '1px solid rgba(0, 0, 0, 0.1)',
                                               padding: '0 0.4em 0 0.4em'}}>
           {time}
         </div>

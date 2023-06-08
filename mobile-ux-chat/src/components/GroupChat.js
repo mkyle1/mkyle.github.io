@@ -91,30 +91,28 @@ function GroupChat() {
                                                     position: 'fixed',
                                                     justifyContent: 'center',
                                                     bottom: '0',
-                                                    alignItems: 'center',
-                                                    marginBottom: '30px',
-                                                    padding: '5 5 0 0',}}>
+                                                    alignItems: 'center',}}>
           <IconButton color="primary" aria-label="upload picture" component="label">
             <input hidden accept="image/*" type="file" />
             <PhotoCamera />
           </IconButton>
-            <TextField
-              className="message-input"
-              type="text"
-              value={message}
-              onChange={handleMessageChange}
-              placeholder="Message"
-              sx={{width: 'auto'}}
-            />
-            <Button 
-              variant="contained"
-              onClick={handleSendMessage}
-              color="primary"
-              className="button"
-              sx={{marginLeft: '10px'}}
-            >
-                Send
-            </Button>
+          <TextField
+            className="message-input"
+            type="text"
+            value={message}
+            onChange={handleMessageChange}
+            placeholder="Message"
+            sx={{width: 'auto'}}
+          />
+          <Button 
+            variant="contained"
+            onClick={handleSendMessage}
+            color="primary"
+            className="button"
+            sx={{marginLeft: '10px'}}
+          >
+              Send
+          </Button>
         </div>
       </div>
     
