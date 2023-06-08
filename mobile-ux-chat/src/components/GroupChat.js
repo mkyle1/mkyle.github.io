@@ -61,15 +61,19 @@ function GroupChat() {
                  display: "flex",
                  flexDirection: 'column'}}>
       <div className="messages" style={{overflowY: 'scroll',
-                                        paddingBottom: '15vh',
+                                        paddingBottom: '20vh',
+                                        paddingTop: '20vh',
                                         display: 'flex',
-                                        flexDirection: 'column'}}>
+                                        flexDirection: 'column',
+                                        //marginBottom: '15vh',
+                                        }}>
         {messages.map((message, index) =>
           <div key={index} sx={{ marginBottom: '30px', float: messageLeftOrRight(message)}}>
             <MessageCard
               usernickname={message.usernickname}
               time={message.time ? timeSort(message.time) : ""}
               text={message.text}
+              image={message.photoid ? message.photoid : ""}
               isOwnMessage={message.userhash === currentUser}
             >
             </MessageCard>
