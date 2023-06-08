@@ -15,16 +15,18 @@ function GroupChat() {
   const [messages, setMessages] = useState([]);
   const currentUser = "Dario";
 
+  const bottomRef = React.useRef();
+
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
   };
 
   const handleSendMessage = () => {
     if (message.trim() !== "") {
+      setMessages([...messages, message]);
+      setMessage("");
       HttpService.sendMessage(message)
         .then(() => {
-          setMessages([...messages, message]);
-          setMessage("");
         });
     }
   };
@@ -35,18 +37,32 @@ function GroupChat() {
     return timeString;
   }
 
+  function messageLeftOrRight(usernickname){
+    if(usernickname === currentUser){
+      return "right";
+    } else {
+      return "left";
+    }
+  }
+
+  useEffect(() => {
+    bottomRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div style={{height: '110vh',
                  marginTop: '4vh',
                  paddingTop: '1vh',
-                 paddingBottom: '100px',
                  justifyContent: 'center',
                  overflow: 'hidden',
                  display: "flex",
                  flexDirection: 'column'}}>
-      <div className="messages" style={{overflowY: 'scroll', paddingBottom: '27vh'}}>
+      <div className="messages" style={{overflowY: 'scroll',
+                                        paddingBottom: '15vh',
+                                        display: 'flex',
+                                        flexDirection: 'column'}}>
         {messages.map((message, index) =>
-          <div key={index} sx={{ marginBottom: '30px'}}>
+          <div key={index} sx={{ marginBottom: '30px', float: messageLeftOrRight(message)}}>
             <MessageCard
               usernickname={message.usernickname}
               time={message.time ? timeSort(message.time) : ""}
@@ -56,6 +72,7 @@ function GroupChat() {
             </MessageCard>
           </div>
         )}
+        <div ref={bottomRef}></div>
       </div>
       <div className="inputs" style={{width: '100%',
                                       display: 'flex',
