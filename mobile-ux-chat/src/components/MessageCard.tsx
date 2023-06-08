@@ -20,11 +20,12 @@ const MessageBox = styled(Box)({
   borderLeftStyle: 'solid',
   borderColor: '#D6D6D6',
 })
+
     
 function MessageCard({ usernickname, text, time, isOwnMessage }: PropsWithChildren<Props>): JSX.Element {
   const limitedText = text ?? ''; // use the entire text message
   const rightLeft = isOwnMessage ? 'right' : 'left';
-  const boxMargin = isOwnMessage ? '0 10px 0 auto': '10px';
+  const boxMargin = isOwnMessage ? '5px 10px 5px 10px': '10px';
 
   return (
     <Box sx={{ display: 'inline-block', margin: boxMargin, textAlign: 'left', float: rightLeft , maxWidth: '80%'}}>

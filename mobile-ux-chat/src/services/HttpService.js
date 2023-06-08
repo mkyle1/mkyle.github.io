@@ -30,7 +30,9 @@ async function register(userid, password, nickname, fullname) {
         password: password,
         nickname: nickname,
         fullname: fullname
-    }, axiosConfig);
+    }, axiosConfig).then((response) => {
+        localStorage.setItem("username", JSON.stringify(userid));
+    });
     return response;
 }
 
@@ -42,8 +44,10 @@ async function login(userid, password, remember) {
         password: password
     }, axiosConfig).then((response) => {
         token = response.data.token;
-        console.log(remember);
         if(remember === "on"){localStorage.setItem("loginToken", JSON.stringify(token));}
+        console.log("Userhash: " + response.data.hash);
+        console.log("Username: " + response.data.usernickname);
+        localStorage.setItem("userhash", response.data.hash);
     });
     return response;
 }

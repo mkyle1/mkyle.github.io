@@ -13,7 +13,7 @@ function GroupChat() {
   }, []);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const currentUser = "Dario";
+  const currentUser = localStorage.getItem("userhash");
 
   const bottomRef = React.useRef();
 
@@ -49,6 +49,9 @@ function GroupChat() {
     bottomRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  console.dir(messages);
+  console.dir(localStorage.getItem("loginToken"));
+
   return (
     <div style={{height: '110vh',
                  marginTop: '4vh',
@@ -67,7 +70,7 @@ function GroupChat() {
               usernickname={message.usernickname}
               time={message.time ? timeSort(message.time) : ""}
               text={message.text}
-              isOwnMessage={message.usernickname === currentUser}
+              isOwnMessage={message.userhash === currentUser}
             >
             </MessageCard>
           </div>
