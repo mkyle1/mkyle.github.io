@@ -56,20 +56,27 @@ function GroupChat() {
   console.dir(localStorage.getItem("loginToken"));
 
   return (
-    <div style={{height: '110dvh',
-                 marginTop: '4vh',
-                 paddingTop: '1vh',
-                 justifyContent: 'center',
-                 overflow: 'hidden',
-                 display: "flex",
-                 flexDirection: 'column'}}>
-      <div className="messages" style={{overflowY: 'scroll',
-                                        paddingBottom: '20vh',
-                                        paddingTop: '20vh',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        //marginBottom: '15vh',
-                                        }}>
+    <div id="GroupChatContainer" 
+         style={{
+          height: '100%',
+          justifyContent: 'center',
+          //overflow: 'hidden',
+          display: "flex",
+          flexDirection: 'column',
+          position: 'relative',
+         }}
+    >
+      <div className="messages"
+      style={{overflowY: 'scroll',
+              height: '100%',
+              paddingBottom: '20dvh',
+              paddingTop: '2dvh',
+              marginTop: '5dvh',
+              display: 'flex',
+              flexDirection: 'column',
+              //marginBottom: '15vh',
+            }}
+      >
         {messages.map((message, index) =>
           <div key={index} sx={{ marginBottom: '30px', float: messageLeftOrRight(message)}}>
             <MessageCard

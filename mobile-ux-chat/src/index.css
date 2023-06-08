@@ -1,6 +1,9 @@
 html {
+  height: 100%;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to bottom right, #569DAA, #87CBB9, #B9EDDD);
   overflow: clip;
-  height: 115dvh;
 }
 
 body {
@@ -11,10 +14,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+  position: relative;
+  
 }
 
 #root {
+  position: relative;
   height: 100%;
+  min-height: 100%;
 }
 
 code {
@@ -23,8 +30,8 @@ code {
 }
 
 .App {
-  background-image: linear-gradient(to bottom right, #569DAA, #87CBB9, #B9EDDD);
   height: 100%;
+  min-height: 100%;
 }
 
 .frosted-glass-panel {

@@ -32,11 +32,13 @@ const RegisterPage = (props) => {
   });
 
     return(
-      <div style={{height: '100%',
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      flexDirection: "column"}}>
+      <div style={{
+        height: '100%',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column"
+        }}>
       <Box
         component="form"
         sx={{
