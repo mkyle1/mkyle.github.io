@@ -35,12 +35,15 @@ export default function LoginPage() {
   }
 
     return(
-    <div>
+    <div style={{height: '100%',
+                 display: "flex",
+                 alignItems: "center",
+                 justifyContent: "center",
+                 flexDirection: "column"}}>
     <Box
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
-        marginTop: "30vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
