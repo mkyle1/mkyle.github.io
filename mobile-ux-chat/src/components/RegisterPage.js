@@ -3,6 +3,10 @@ import HttpService from "../services/HttpService";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import IconButton from "@mui/material/IconButton";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const RegisterPage = (props) => {
@@ -13,6 +17,12 @@ const RegisterPage = (props) => {
   const [nickname, setNickname] = useState(".");
   const [realname, setRealname] = useState(".");
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const handleRegister = () => {
     if (password === passwordConfirm) {
@@ -76,19 +86,45 @@ const RegisterPage = (props) => {
           <TextField
             required
             label="Password"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             onChange={(event) => {setPassword(event.target.value)}}
             color={password.length < 8 ? "warning" : "success"}
             error={password === ""}
             helperText={(password === "" && 'Password required') || (password.length < 8 && 'Password must be at least 8 characters') }
+            InputProps={{
+              endAdornment:
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+            }}
           />
           <TextField
             required
             label="Password Confirm"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             onChange={(event) => {setPasswordConfirm(event.target.value)}}
             error={passwordConfirm === ""}
             helperText={(passwordConfirm === "" && 'Confirmation of password required') || (password !== passwordConfirm && 'Passwords must match')}
+            InputProps={{
+              endAdornment:
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+            }}
           />
       </Box>
       <Button variant="contained" onClick={handleRegister} sx={{marginBottom: "2vh"}}>Register</Button>

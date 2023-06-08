@@ -4,6 +4,10 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import IconButton from "@mui/material/IconButton";
 import { Link, useNavigate } from "react-router-dom";
 import HttpService from "../services/HttpService";
 
@@ -14,6 +18,12 @@ export default function LoginPage() {
   const [loginFail, setLoginFail] = useState(false);
   const [remember, setRemember] = useState("off");
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem("loginToken"));
@@ -62,10 +72,23 @@ export default function LoginPage() {
         <TextField
           required
           label="Password"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           onChange={(event) => {setPassword(event.target.value)}}
           error={password === ""}
           helperText={password === "" ? 'Password required' : ' '}
+          InputProps={{
+            endAdornment:
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+          }}
         />
         <FormControlLabel
           control={<Checkbox />}
