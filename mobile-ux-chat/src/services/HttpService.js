@@ -3,7 +3,7 @@ import axios from "axios";
 
 let token = null;
 try {
-    token = JSON.parse(localStorage.getItem("loginToken"));
+    token = localStorage.getItem("loginToken");
 } catch (error) {console.log("No Logintoken yet")}
 
 const _axios = axios.create();
@@ -44,7 +44,7 @@ async function login(userid, password, remember) {
         password: password
     }, axiosConfig).then((response) => {
         token = response.data.token;
-        if(remember === "on"){localStorage.setItem("loginToken", JSON.stringify(token));}
+        if(remember === "on"){localStorage.setItem("loginToken", token);}
         console.log("Userhash: " + response.data.hash);
         console.log("Username: " + response.data.usernickname);
         localStorage.setItem("userhash", response.data.hash);
@@ -70,6 +70,12 @@ async function getMessages(userid, sessionToken) {
     return response;
 }
 
+async function fetchPhoto(userid, photoid, sessionToken) {
+    //const response = await _axios.get(baseUrl + "fetchPhoto&userid=" + userid + "&photoid=" + photoid + "&sessionToken=" + sessionToken);
+    const response = await axios.get(baseUrl + '?request=fetchphoto&photoid=' + photoid + '&token=' + token, axiosConfig);
+    return response;
+}
+
 async function sendMessage(message) {
     //const response = await _axios.get(baseUrl + "sendMessage&userid=" + userid + "&sessionToken=" + sessionToken + "&message=" + message);
     const response = await axios.post(baseUrl, {
@@ -85,6 +91,7 @@ const HttpService = {
     logout,
     register,
     getMessages,
+    fetchPhoto,
     sendMessage,
 };
 

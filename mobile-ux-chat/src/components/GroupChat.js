@@ -73,7 +73,7 @@ function GroupChat() {
               usernickname={message.usernickname}
               time={message.time ? timeSort(message.time) : ""}
               text={message.text}
-              image={message.photoid ? message.photoid : ""}
+              photoid={message.photoid ? message.photoid : ""}
               isOwnMessage={message.userhash === currentUser}
             >
             </MessageCard>
