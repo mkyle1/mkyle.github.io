@@ -48,6 +48,7 @@ async function login(userid, password, remember) {
         console.log("Userhash: " + response.data.hash);
         console.log("Username: " + response.data.usernickname);
         localStorage.setItem("userhash", response.data.hash);
+        localStorage.setItem("usernickname", response.data.usernickname);
     });
     return response;
 }

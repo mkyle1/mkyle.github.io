@@ -21,12 +21,15 @@ function GroupChat() {
     setMessage(event.target.value);
   };
 
+
+
   const handleSendMessage = () => {
     if (message.trim() !== "") {
-      setMessages([...messages, message]);
-      setMessage("");
       HttpService.sendMessage(message)
         .then(() => {
+          HttpService.getMessages().then((response) => {
+            setMessages(response.data.messages);
+          });
         });
     }
   };
@@ -53,7 +56,7 @@ function GroupChat() {
   console.dir(localStorage.getItem("loginToken"));
 
   return (
-    <div style={{height: '110vh',
+    <div style={{height: '110dvh',
                  marginTop: '4vh',
                  paddingTop: '1vh',
                  justifyContent: 'center',
@@ -79,7 +82,7 @@ function GroupChat() {
             </MessageCard>
           </div>
         )}
-        <div ref={bottomRef}></div>
+        <div ref={bottomRef} id="bottomRef" style={{marginBottom: '10em'}}></div>
       </div>
       <div className="inputs" style={{width: '100%',
                                       display: 'flex',
