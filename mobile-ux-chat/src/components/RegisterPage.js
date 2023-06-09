@@ -64,6 +64,7 @@ const RegisterPage = (props) => {
       >
           <TextField
             required
+            className="input-field"
             label="Nickname"
             onChange={(event) => {setNickname(event.target.value)}}
             error={nickname === ""}
@@ -71,6 +72,7 @@ const RegisterPage = (props) => {
           />
           <TextField
             required
+            className="input-field"
             label="Real Name"
             onChange={(event) => {setRealname(event.target.value)}}
             error={realname === ""}
@@ -78,6 +80,7 @@ const RegisterPage = (props) => {
           />
           <TextField
             required
+            className="input-field"
             label="Username"
             onChange={(event) => {setUserId(event.target.value)}}
             error={userId === ""}
@@ -85,6 +88,7 @@ const RegisterPage = (props) => {
           />
           <TextField
             required
+            className="input-field"
             label="Password"
             type={showPassword ? 'text' : 'password'}
             onChange={(event) => {setPassword(event.target.value)}}
@@ -100,13 +104,14 @@ const RegisterPage = (props) => {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <VisibilityOff className="vis-icon" /> : <Visibility className="vis-icon"/>}
                   </IconButton>
                 </InputAdornment>
             }}
           />
           <TextField
             required
+            className="input-field"
             label="Password Confirm"
             type={showPassword ? 'text' : 'password'}
             onChange={(event) => {setPasswordConfirm(event.target.value)}}
@@ -121,7 +126,7 @@ const RegisterPage = (props) => {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <VisibilityOff className="vis-icon"/> : <Visibility className="vis-icon"/>}
                   </IconButton>
                 </InputAdornment>
             }}

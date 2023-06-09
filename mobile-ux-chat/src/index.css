@@ -1,9 +1,6 @@
 html {
   height: 100%;
   min-height: 100%;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(to bottom right, #569DAA, #87CBB9, #B9EDDD);
-  overflow: clip;
 }
 
 body {
@@ -28,11 +25,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 .App {
   height: 100%;
   min-height: 100%;
+  background-repeat: no-repeat;
+  overflow: clip;
 }
+#dark{
+  background-image: linear-gradient(to bottom right, #001E3C, #0A1929);
+  color: whitesmoke;
+}
+
+#light{
+  background-image: linear-gradient(to bottom right, #569DAA, #87CBB9, #B9EDDD);
+}
+
 
 .frosted-glass-panel {
   background-color: rgba(255, 255, 255, 0.2);
@@ -45,13 +52,35 @@ code {
 }
 
 .frosted-glass-panel-messages {
-  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   border-radius: 8px;
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-  border: 2px solid rgba(255, 255, 255, 0);
   padding: 1em;
   margin: 5px;
+}
+#dark .frosted-glass-panel-messages{
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 1rem 0 rgba(255, 255, 255, .1);
+  border: 2px solid rgba(255, 255, 255, .05);
+}
+
+#light .frosted-glass-panel-messages{
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+
+#dark .username{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+#light .username{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#dark .message-date{
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+#light .message-date{
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .message {
@@ -69,6 +98,33 @@ code {
   width: 60%;
   margin-left: auto;
 }
+
+#dark .message-input{
+  color: whitesmoke;
+  border: whitesmoke;
+}
+#light .message-input{
+  color: auto;
+}
+#dark .vis-icon
+{
+    color: whitesmoke;
+}
+
+#dark .input-field .MuiInputBase-root,
+#dark .input-field .MuiInputLabel-root,
+#dark .input-field .MuiFormHelperText-root
+{
+    color: whitesmoke;
+}
+#dark .input-field .MuiOutlinedInput-notchedOutline{
+    border-color: whitesmoke;
+}
+
+#dark .checkbox .MuiCheckbox-root{
+  color: whitesmoke;
+}
+
 
 .button {
   margin-top: 5px;

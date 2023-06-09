@@ -64,6 +64,7 @@ export default function LoginPage() {
     >
         <TextField
           required
+          className="input-field"
           label="Username"
           onChange={(event) => {setUserId(event.target.value)}}
           error={userId === ""}
@@ -71,6 +72,7 @@ export default function LoginPage() {
         />
         <TextField
           required
+          className="input-field"
           label="Password"
           type={showPassword ? 'text' : 'password'}
           onChange={(event) => {setPassword(event.target.value)}}
@@ -85,12 +87,13 @@ export default function LoginPage() {
                   onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  {showPassword ? <VisibilityOff className="vis-icon"/> : <Visibility className="vis-icon"/>}
                 </IconButton>
               </InputAdornment>
           }}
         />
-        <FormControlLabel
+        <FormControlLabel 
+          className="checkbox"
           control={<Checkbox />}
           label="Remember Login"
           onChange={(event) => {setRemember(event.target.value)}}

@@ -45,8 +45,8 @@ const Settings = (props) => {
                     value={value}
                     onChange={handleChange}
                 >
-        <FormControlLabel value="light" control={<Radio />} label="Light Mode" />
-        <FormControlLabel value="dark" control={<Radio />} label="Dark Mode" />
+        <FormControlLabel value="light"  control={<Radio />} label="Light Mode" />
+        <FormControlLabel value="dark"  control={<Radio />} label="Dark Mode" />
         </RadioGroup>
         </FormControl>
         

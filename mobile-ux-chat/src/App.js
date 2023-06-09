@@ -5,12 +5,16 @@ import RegisterPage from "./components/RegisterPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import GroupChat from "./components/GroupChat";
+import { createContext } from "react";
 
+export const ThemeContext = React.createContext(null);
 export default function App() {
   const [changedPath, setPath] = useState("");
+  const [theme, setTheme] = useState("dark");
 
   return (
-    <div className="App">
+    <ThemeContext.Provider value={{theme, setTheme}}>
+    <div className="App" id={theme}>
       <BrowserRouter>
         <TopAppBar path={window.location.pathname}/>
         <Routes>
@@ -20,5 +24,6 @@ export default function App() {
         </Routes>
       </BrowserRouter>
     </div>
+    </ThemeContext.Provider>
   );
 }

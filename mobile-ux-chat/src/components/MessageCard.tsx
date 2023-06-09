@@ -47,7 +47,6 @@ function MessageCard({ usernickname, text, photoid, time, isOwnMessage }: PropsW
                float: rightLeft ,
                maxWidth: '80%'}}>
         <div className='username' style={{fontWeight: 'bold',
-                                          borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
                                           padding: '0 0.4em 0.2em 0.4em'}}>
           {usernickname}
         </div>
@@ -60,7 +59,6 @@ function MessageCard({ usernickname, text, photoid, time, isOwnMessage }: PropsW
           {image}
         </div>
         <div className='message-date' style={{fontWeight: 'lighter',
-                                              borderTop: '1px solid rgba(0, 0, 0, 0.1)',
                                               padding: '0 0.4em 0 0.4em'}}>
           {time}
         </div>

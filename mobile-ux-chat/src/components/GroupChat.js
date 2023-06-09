@@ -104,7 +104,7 @@ function GroupChat() {
             <PhotoCamera />
           </IconButton>
           <TextField
-            className="message-input"
+            className="message-input input-field"
             type="text"
             value={message}
             onChange={handleMessageChange}
