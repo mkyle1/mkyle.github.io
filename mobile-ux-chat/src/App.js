@@ -10,7 +10,7 @@ import { createContext } from "react";
 export const ThemeContext = React.createContext(null);
 export default function App() {
   const [changedPath, setPath] = useState("");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") !== null ? localStorage.getItem("theme") : "light");
   function themeChange(state){
     setTheme(state);
   }

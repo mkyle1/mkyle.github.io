@@ -16,11 +16,12 @@ import HttpService from '../services/HttpService';
 const Settings = (props, {setNewTheme}) => {
   const {open, onClose} = props;  
 
-  const [value, setValue] = React.useState('light');
+  const [value, setValue] = React.useState(localStorage.getItem("theme") !== null ? localStorage.getItem("theme") : "light");
 
   const handleChange = (event) => {
     setValue(event.target.value);
     props.setTheme(event.target.value);
+    localStorage.setItem("theme", event.target.value);
   };
 
   return (
