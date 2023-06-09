@@ -49,7 +49,7 @@ const TopAppBar = (props) => {
               <SettingsIcon fontSize="large"/>
             </IconButton>
           )}
-          <Settings open={settingsOpen} onClose={handleSettingsClose}/>
+          <Settings setTheme={props.setTheme} open={settingsOpen} onClose={handleSettingsClose}/>
         </Toolbar>
       </AppBar>
     </Paper>

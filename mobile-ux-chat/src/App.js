@@ -10,13 +10,16 @@ import { createContext } from "react";
 export const ThemeContext = React.createContext(null);
 export default function App() {
   const [changedPath, setPath] = useState("");
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
+  function themeChange(state){
+    setTheme(state);
+  }
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>
     <div className="App" id={theme}>
       <BrowserRouter>
-        <TopAppBar path={window.location.pathname}/>
+        <TopAppBar path={window.location.pathname} setTheme = {themeChange}/>
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage setPath={setPath}/>} />

@@ -13,13 +13,14 @@ import FormLabel from '@mui/material/FormLabel';
 import { Link } from "react-router-dom";
 import HttpService from '../services/HttpService';
 
-const Settings = (props) => {
+const Settings = (props, {setNewTheme}) => {
   const {open, onClose} = props;  
 
   const [value, setValue] = React.useState('light');
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    props.setTheme(event.target.value);
   };
 
   return (
