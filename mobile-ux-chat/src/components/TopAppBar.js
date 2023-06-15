@@ -19,8 +19,8 @@ const TopAppBar = (props) => {
   const location = useLocation();
 
   useEffect(() => {
-    setBackButton(location.pathname === "/register");
-    setSettingsButton(location.pathname === "/chat");
+    setBackButton(location.pathname === "/register" || location.pathname === "/media");
+    setSettingsButton(location.pathname === "/chat" || location.pathname === "/media");
 }, [location.pathname]);
 
   const handleBackClick = () => {
@@ -47,7 +47,7 @@ const TopAppBar = (props) => {
       <AppBar position="static" sx={{ fontSize: 72, backgroundColor: "#007ACC" }}>
         <Toolbar>
         {backButton && (
-            <IconButton component={Link} to="/" color="inherit" aria-label="back" onClick={handleBackClick}>
+            <IconButton component={Link} to={location.pathname === "/register" ? "/" : "/chat"} color="inherit" aria-label="back" onClick={handleBackClick}>
               <ArrowBackIcon fontSize="large"/>
             </IconButton>
           )}

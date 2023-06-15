@@ -5,6 +5,7 @@ import RegisterPage from "./components/RegisterPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import GroupChat from "./components/GroupChat";
+import MediaPage from "./components/MediaPage";
 import { createContext } from "react";
 
 export const ThemeContext = React.createContext(null);
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage setPath={setPath}/>} />
           <Route path="/chat" element={<GroupChat />} />
+          <Route path="/media" element={<MediaPage />} />
         </Routes>
       </BrowserRouter>
     </div>

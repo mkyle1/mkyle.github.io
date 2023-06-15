@@ -31,8 +31,8 @@ const Profile = (props) => {
                     }}>
         {!deleteWarning && (        
         <Button 
-            component={Link} to="/" 
-            onClick={() => {onClose(); localStorage.removeItem("loginToken"); HttpService.logout()}} 
+            component={Link} to="/media" 
+            onClick={() => {onClose();}} 
             variant="outlined" sx={{marginBottom: "10px", marginTop: "10px", textTransform: "unset !important"}}>
                 View Media
         </Button>
