@@ -34,12 +34,15 @@ const Settings = (props, {setNewTheme}) => {
                     justifyContent: "center",
                     flexDirection: "column",
                     }}>
-          <FormControlLabel
-          control={<Checkbox />}
-          label="Mute Chat"
-          labelPlacement="start"
-        />
-        <Button variant="outlined" sx={{marginBottom: "20px"}}>Leave Chat</Button>
+        <FormControl sx={{paddingTop: "10px", borderTop: "2px solid black"}}>
+          <FormLabel>Chat Options</FormLabel>         
+            <FormControlLabel
+            control={<Checkbox />}
+            label="Mute Chat"
+            labelPlacement="start"
+            />
+          <Button variant="outlined" sx={{marginBottom: "20px"}}>Leave Chat</Button>
+        </FormControl>
 
         <FormControl sx={{paddingTop: "10px", borderTop: "2px solid black", borderBottom: "2px solid black"}}>
             <FormLabel>Theme</FormLabel>
@@ -52,12 +55,9 @@ const Settings = (props, {setNewTheme}) => {
         </RadioGroup>
         </FormControl>
         
-        <Button component={Link} to="/" onClick={() => {onClose(); localStorage.removeItem("loginToken"); HttpService.logout()}} variant="outlined" sx={{marginBottom: "10px", marginTop: "20px"}}>Log Out</Button>
-        <Button component={Link} to="/" onClick={onClose} variant="outlined" color="warning" sx={{marginBottom: "10px"}}>Delete Account</Button>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose}>Cancel</Button>
-          <Button onClick={onClose}>Save</Button>
+          <Button onClick={onClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>
