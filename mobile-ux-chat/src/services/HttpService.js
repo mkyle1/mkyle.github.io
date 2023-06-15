@@ -87,6 +87,15 @@ async function sendMessage(message) {
     return response;
 }
 
+async function deregister(message) {
+    //const response = await _axios.get(baseUrl + "sendMessage&userid=" + userid + "&sessionToken=" + sessionToken + "&message=" + message);
+    const response = await axios.post(baseUrl, {
+        request: "deregister",
+        token: token
+    }, axiosConfig);
+    return response;
+}
+
 const HttpService = {
     login,
     logout,
@@ -94,6 +103,7 @@ const HttpService = {
     getMessages,
     fetchPhoto,
     sendMessage,
+    deregister,
 };
 
 export default HttpService;

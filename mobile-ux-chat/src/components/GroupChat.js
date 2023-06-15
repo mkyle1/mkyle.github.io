@@ -70,11 +70,10 @@ function GroupChat() {
       style={{overflowY: 'scroll',
               height: '100%',
               paddingBottom: '20dvh',
-              paddingTop: '2dvh',
+              paddingTop: '5dvh',
               marginTop: '5dvh',
               display: 'flex',
               flexDirection: 'column',
-              //marginBottom: '15vh',
             }}
       >
         {messages.map((message, index) =>

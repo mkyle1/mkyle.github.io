@@ -39,9 +39,9 @@ const Settings = (props, {setNewTheme}) => {
             <FormControlLabel
             control={<Checkbox />}
             label="Mute Chat"
-            labelPlacement="start"
+            labelPlacement="end"
             />
-          <Button variant="outlined" sx={{marginBottom: "20px"}}>Leave Chat</Button>
+          <Button variant="outlined" sx={{marginBottom: "20px", textTransform: "unset !important"}}>Leave Chat</Button>
         </FormControl>
 
         <FormControl sx={{paddingTop: "10px", borderTop: "2px solid black", borderBottom: "2px solid black"}}>
