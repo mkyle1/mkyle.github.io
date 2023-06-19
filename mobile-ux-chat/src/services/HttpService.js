@@ -77,12 +77,13 @@ async function fetchPhoto(userid, photoid, sessionToken) {
     return response;
 }
 
-async function sendMessage(message) {
+async function sendMessage(message, photo) {
     //const response = await _axios.get(baseUrl + "sendMessage&userid=" + userid + "&sessionToken=" + sessionToken + "&message=" + message);
     const response = await axios.post(baseUrl, {
         request: "sendmessage",
         token: token,
-        text: message
+        text: message,
+        photo: photo
     }, axiosConfig);
     return response;
 }

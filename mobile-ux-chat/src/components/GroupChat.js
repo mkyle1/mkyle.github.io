@@ -13,6 +13,7 @@ function GroupChat() {
   }, []);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [photo64, setPhoto64] = useState("");
   const currentUser = localStorage.getItem("userhash");
 
   const bottomRef = React.useRef();
@@ -21,11 +22,24 @@ function GroupChat() {
     setMessage(event.target.value);
   };
 
+  const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
+    reader.onloadend = () => {
+      setPhoto64(reader.result.slice(22));
+      console.log(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
+  }
 
   const handleSendMessage = () => {
     if (message.trim() !== "") {
-      HttpService.sendMessage(message)
+      HttpService.sendMessage(message, photo64)
         .then(() => {
           HttpService.getMessages().then((response) => {
             setMessages(response.data.messages);
@@ -99,7 +113,7 @@ function GroupChat() {
                                                     bottom: '0',
                                                     alignItems: 'center',}}>
           <IconButton color="primary" aria-label="upload picture" component="label">
-            <input hidden accept="image/*" type="file" />
+            <input hidden accept="image/*" type="file" onChange={handlePhotoChange}/>
             <PhotoCamera />
           </IconButton>
           <TextField
