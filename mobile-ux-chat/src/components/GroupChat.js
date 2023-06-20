@@ -3,6 +3,9 @@ import { Button, TextField, IconButton } from "@mui/material";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import HttpService from "../services/HttpService";
 import MessageCard from './MessageCard.tsx';
+import InputAdornment from '@mui/material/InputAdornment';
+import PhotoIcon from '@mui/icons-material/Photo';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function GroupChat() {
   useEffect(() => {
@@ -121,6 +124,21 @@ function GroupChat() {
             type="text"
             value={message}
             onChange={handleMessageChange}
+            InputProps={{
+              endAdornment:
+                <InputAdornment position="end">
+                  {photo64 &&(
+                  <IconButton
+                    aria-label="image attached"
+                    edge="end"
+                  >
+                    +
+                    <PhotoIcon color="secondary" />
+                    <DeleteIcon color="secondary" onClick={() => {setPhoto64("")}}/>
+                  </IconButton>
+                  )}
+                </InputAdornment>
+            }}
             placeholder="Message"
             sx={{width: 'auto'}}
           />
